@@ -8,7 +8,7 @@ const Footer = () => {
         <aside>
           <img className='h-20' src={Logo} alt="" />
           <p>
-          Copyright © 2025 - All right reserved by Hero.IO
+          Copyright © 2025 - All right reserved by Pet Care Service
           </p>
         </aside>
         <nav>
