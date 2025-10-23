@@ -1,0 +1,74 @@
+[
+  {
+    "serviceId": 1,
+    "serviceName": "Winter Coat Fitting for Dogs",
+    "providerName": "PawCare Studio",
+    "providerEmail": "info@pawcare.com",
+    "price": 25,
+    "rating": 4.9,
+    "slotsAvailable": 4,
+    "description": "Custom coat fitting and warm outfit options to keep your dog comfortable in the cold.",
+    "image": "https://i.ibb.co.com/DHgkHQz2/j-f-a-Pdn-Pyq1iyg-unsplash.jpg",
+    "category": "Clothing"
+  },
+  {
+    "serviceId": 2,
+    "serviceName": "Winter Grooming & Paw Treatment",
+    "providerName": "CozyPets Grooming",
+    "providerEmail": "hello@cozypets.com",
+    "price": 30,
+    "rating": 4.8,
+    "slotsAvailable": 3,
+    "description": "Professional grooming with moisturizing paw balm and winter-safe shampoo.",
+    "image": "https://i.ibb.co.com/C5ng2r99/aref-sarkhosh-c-Xp-Ivj-Yny4-unsplash.jpg",
+    "category": "Grooming"
+  },
+  {
+    "serviceId": 3,
+    "serviceName": "Heated Pet Bed Rental",
+    "providerName": "WarmNest Pets",
+    "providerEmail": "support@warmnest.com",
+    "price": 15,
+    "rating": 4.7,
+    "slotsAvailable": 6,
+    "description": "Rent cozy heated pet beds designed to keep cats and small dogs warm during freezing nights.",
+    "image": "https://i.ibb.co.com/N25wz2Pc/raymond-yeung-392pn-CBd-Zp-I-unsplash.jpg",
+    "category": "Comfort"
+  },
+  {
+    "serviceId": 4,
+    "serviceName": "Winter Health Check-Up",
+    "providerName": "FurWell Veterinary",
+    "providerEmail": "contact@furwellvet.com",
+    "price": 40,
+    "rating": 5.0,
+    "slotsAvailable": 5,
+    "description": "Comprehensive winter health check-up focusing on joint care, coat condition, and immunity boost.",
+    "image": "https://i.ibb.co.com/5gHHVHcK/erik-mclean-Etobk5-T7-C-s-unsplash.jpg",
+    "category": "Healthcare"
+  },
+  {
+    "serviceId": 5,
+    "serviceName": "Pet Winter Nutrition Plan",
+    "providerName": "HealthyPaws Nutritionists",
+    "providerEmail": "care@healthypaws.com",
+    "price": 20,
+    "rating": 4.6,
+    "slotsAvailable": 7,
+    "description": "Custom diet plan tailored for pets to maintain energy levels and warmth during cold seasons.",
+    "image": "https://i.ibb.co.com/KjgD3Xj1/pexels-yankrukov-6617494.jpg",
+    "category": "Nutrition"
+  },
+  {
+    "serviceId": 6,
+    "serviceName": "Snow Walk Training for Dogs",
+    "providerName": "FrostyPaws Training Center",
+    "providerEmail": "train@frostypaws.com",
+    "price": 35,
+    "rating": 4.9,
+    "slotsAvailable": 2,
+    "description": "Special winter walking lessons to help dogs adapt to snow and icy surfaces safely.",
+    "image": "https://i.ibb.co.com/ksMkXQnC/pexels-miami302-30079901.jpg",
+    "category": "Training"
+  }
+]
