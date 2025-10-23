@@ -12,7 +12,7 @@ const Experts = () => {
                 </p>
 
                 <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-                    {/* <!-- Expert 1 --> */}
+                    {/* Expert 1 */}
                     <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6">
                         <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=500&q=60" alt="Vet 1" class="w-32 h-32 rounded-full mx-auto object-cover mb-4" />
                         <h3 class="text-xl font-semibold text-gray-800">Dr. Sarah Johnson</h3>
@@ -22,7 +22,7 @@ const Experts = () => {
                         </p>
                     </div>
 
-                    {/* <!-- Expert 2 --> */}
+                    {/* Expert 2 */}
                     <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6">
                         <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=500&q=60" alt="Vet 2" class="w-32 h-32 rounded-full mx-auto object-cover mb-4" />
                         <h3 class="text-xl font-semibold text-gray-800">Dr. Michael Lee</h3>
@@ -32,7 +32,7 @@ const Experts = () => {
                         </p>
                     </div>
 
-                    {/* <!-- Expert 3 --> */}
+                    {/* Expert 3 */}
                     <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6">
                         <img src={vet1} alt="Vet 3" class="w-32 h-32 rounded-full mx-auto object-cover mb-4" />
                         <h3 class="text-xl font-semibold text-gray-800">Dr. Emily Carter</h3>
@@ -42,7 +42,7 @@ const Experts = () => {
                         </p>
                     </div>
 
-                    {/* <!-- Expert 4 --> */}
+                    {/* Expert 4 */}
                     <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6">
                         <img src={vet2} alt="Vet 4" class="w-32 h-32 rounded-full mx-auto object-cover mb-4" />
                         <h3 class="text-xl font-semibold text-gray-800">Dr. David Brown</h3>
