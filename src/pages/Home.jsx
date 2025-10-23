@@ -2,6 +2,8 @@ import React from 'react'
 import Banner from '../layouts/Banner'
 import useCardsData from '../Hooks/useCardsData'
 import PetServicesCard from '../components/PetServicesCard';
+import WinterCareTips from '../layouts/WinterCareTips';
+import Experts from '../layouts/Experts';
 
 
 const Home = () => {
@@ -9,7 +11,8 @@ const Home = () => {
     const { petservices } = useCardsData();
 
     return (
-        <div>
+
+        <>
             <Banner />
             <div className="w-11/12 mx-auto">
                 <h2 className='text-center text-4xl py-5 font-bold'>Popular Winter Care Services</h2>
@@ -21,7 +24,10 @@ const Home = () => {
                     }
                 </div>
             </div>
-        </div>
+            <WinterCareTips />
+            <Experts />
+        </>
+
     )
 }
 
