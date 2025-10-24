@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { use } from 'react'
 import logo from '../assets/logonav.jpg'
 import { Link, NavLink } from 'react-router'
+import { AuthContext } from '../provider/AuthProvider'
 
 const Navbar = () => {
+    const { user } = use(AuthContext);
     return (
         <nav className='bg-base-100 shadow-sm'>
             <div className="navbar w-11/12 mx-auto">
+            <div className="">{user && user.email}</div>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -45,7 +48,7 @@ const Navbar = () => {
                                 src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
                         </div>
                     </div>
-                    <a className="btn">Button</a>
+                    <Link to='/auth/login' className="btn btn-primary">Login</Link>
                 </div>
             </div>
         </nav>
