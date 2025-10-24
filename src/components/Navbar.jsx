@@ -1,18 +1,20 @@
-import React, { use } from 'react'
+import React, { useContext } from 'react'
 import logo from '../assets/logonav.jpg'
 import { Link, NavLink } from 'react-router'
 import { AuthContext } from '../provider/AuthProvider'
 
 const Navbar = () => {
-    const { user } = use(AuthContext);
+    const { user } = useContext(AuthContext);
+
     return (
         <nav className='bg-base-100 shadow-sm'>
             <div className="navbar w-11/12 mx-auto">
-            <div className="">{user && user.email}</div>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
                         </div>
                         <ul
                             tabIndex="-1"
@@ -22,17 +24,15 @@ const Navbar = () => {
                             <li><NavLink to='/myprofile'>My Profile</NavLink></li>
                         </ul>
                     </div>
+
                     <Link to='/'>
                         <div className="flex items-center gap-x-2">
-                            <div className="">
-                                <img className='w-10 h-10 rounded-ss-full' src={logo} alt="" />
-                            </div>
-                            <div className="text-2xl font-bold">
-                                <h3>Pet Care Service</h3>
-                            </div>
+                            <img className='w-10 h-10 rounded-ss-full' src={logo} alt="logo" />
+                            <h3 className="text-2xl font-bold">Pet Care Service</h3>
                         </div>
                     </Link>
                 </div>
+
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><NavLink to='/'>Home</NavLink></li>
@@ -40,15 +40,35 @@ const Navbar = () => {
                         <li><NavLink to='/myprofile'>My Profile</NavLink></li>
                     </ul>
                 </div>
+
                 <div className="navbar-end gap-x-2">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img
-                                alt="Tailwind CSS Navbar component"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                        </div>
-                    </div>
-                    <Link to='/auth/login' className="btn btn-primary">Login</Link>
+                    {
+                        user && (
+                            <div className="relative group">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full border-2 border-blue-400">
+                                        {/* Static image from DaisyUI */}
+                                        <img
+                                            alt="User Avatar"
+                                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                                        />
+                                    </div>
+                                </div>
+                                <div
+                                    className="absolute left-1/2 -translate-x-1/2 bottom-[-2.5rem] bg-gray-800 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap"
+                                >
+                                    {user.email}
+                                </div>
+                            </div>
+                        )
+                    }
+
+                    {/* Login / Logout Button */}
+                    {
+                        user
+                            ? <button className="btn btn-primary">LogOut</button>
+                            : <Link to='/auth/login' className="btn btn-primary">Login</Link>
+                    }
                 </div>
             </div>
         </nav>
