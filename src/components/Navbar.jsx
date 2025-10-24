@@ -6,6 +6,11 @@ import { AuthContext } from '../provider/AuthProvider'
 const Navbar = () => {
     const { user } = useContext(AuthContext);
 
+
+    const handleLogOut = () => {
+        console.log("LogOut");
+    }
+
     return (
         <nav className='bg-base-100 shadow-sm'>
             <div className="navbar w-11/12 mx-auto">
@@ -66,7 +71,7 @@ const Navbar = () => {
                     {/* Login / Logout Button */}
                     {
                         user
-                            ? <button className="btn btn-primary">LogOut</button>
+                            ? <button onClick={handleLogOut} className="btn btn-primary">LogOut</button>
                             : <Link to='/auth/login' className="btn btn-primary">Login</Link>
                     }
                 </div>
