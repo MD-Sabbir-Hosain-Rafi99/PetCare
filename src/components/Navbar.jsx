@@ -4,11 +4,17 @@ import { Link, NavLink } from 'react-router'
 import { AuthContext } from '../provider/AuthProvider'
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, signOutUser } = useContext(AuthContext);
 
 
     const handleLogOut = () => {
-        console.log("LogOut");
+        // console.log("LogOut");
+        signOutUser()
+            .then(() => {
+                alert("LogOut Done")
+            }).catch((err) => {
+                console.log(err)
+            })
     }
 
     return (
@@ -47,18 +53,18 @@ const Navbar = () => {
                 </div>
 
                 <div className="navbar-end gap-x-2">
+                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                        <div className="w-10 rounded-full border-2 border-blue-400">
+                            <img
+                                alt="User Avatar"
+                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                            />
+                        </div>
+                    </div>
                     {
                         user && (
                             <div className="relative group">
-                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                    <div className="w-10 rounded-full border-2 border-blue-400">
-                                        {/* Static image from DaisyUI */}
-                                        <img
-                                            alt="User Avatar"
-                                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                                        />
-                                    </div>
-                                </div>
+
                                 <div
                                     className="absolute left-1/2 -translate-x-1/2 bottom-[-2.5rem] bg-gray-800 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap"
                                 >

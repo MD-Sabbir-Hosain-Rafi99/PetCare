@@ -4,7 +4,7 @@ import app from '../firebase/firebase.config';
 // Contex create korar step 3ta
 // Step-1 : Create Context and export korbo bcz ayi context ta amr multiple jaigaty use korte hobe
 export const AuthContext = createContext();
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
@@ -16,6 +16,11 @@ const AuthProvider = ({ children }) => {
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     };
+
+    // User SignOut er jonno function create kori
+    const signOutUser = () => {
+        return signOut(auth);
+    }
 
 
     useEffect(() => {
@@ -32,6 +37,7 @@ const AuthProvider = ({ children }) => {
         user,
         setUser,
         createUser,
+        signOutUser,
     }
 
     // Step-2 authContext k AuthProvider theke return kore dawa
