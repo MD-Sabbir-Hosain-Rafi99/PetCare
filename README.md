@@ -1,3 +1,26 @@
+1. Project name : WarmPaws – Pet Care in Winter
+2. Purpose : A platform that helps pet owners keep their pets warm, safe, and healthy during winter while exploring services, clothing, grooming, and tips.
+3. Key features: Winter Care, Pet Clothing, Grooming, Wellness, Expert Tips, Booking Services, User Profiles, Google Login
+4. Npm Packes which is I used in this assignment are : react-router, raect-icons, tailwindcss, daisyui, swiper, fermer-motion
+5. Live Link Of Project : https://petcare-auth-b321d.web.app/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router'
 import { AuthContext } from '../provider/AuthProvider'
 import GoogleLoginButton from '../components/GoogleLoginButton'
+import toast from 'react-hot-toast'
 
 const Login = () => {
     const [error, setError] = useState("")
@@ -22,10 +23,12 @@ const Login = () => {
             .then((res) => {
                 const user = res.user;
                 navigate(`${location.state ? location.state : '/'}`)
+                toast.success("Login Sucessfully!")
             })
             .catch((err) => {
                 const errorCode = err.code;
                 setError(errorCode);
+                toast.error(errorCode)
             })
     }
 

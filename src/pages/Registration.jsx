@@ -30,6 +30,7 @@ const Registration = () => {
                         console.log(err)
                         setUser(user);
                     })
+                    toast.success("Registration Sucessfully!")
             }).catch((err) => {
                 const errorCode = err.code;
                 // const errorMessage = err.message;
