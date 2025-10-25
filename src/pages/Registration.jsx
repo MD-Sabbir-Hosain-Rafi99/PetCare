@@ -1,9 +1,12 @@
-import React, { use } from 'react'
+import React, { use, useState } from 'react'
 import { Link } from 'react-router'
 import { AuthContext } from '../provider/AuthProvider'
+import toast from 'react-hot-toast';
 
 const Registration = () => {
     const { createUser, setUser } = use(AuthContext);
+    const [passwordvaidation, setPasswordValidation] = useState("")
+    // const [error, setError] = useState("")
     const handleRegister = (e) => {
         e.preventDefault();
         // console.log(e.target);
@@ -20,9 +23,28 @@ const Registration = () => {
                 setUser(user);
             }).catch((err) => {
                 const errorCode = err.code;
-                const errorMessage = err.message;
-                alert(errorMessage)
+                // const errorMessage = err.message;
+                console.log(errorCode)
+                // setError(errorCode)
             })
+
+      
+        if (!/[A-Z]/.test(password)) {
+            setPasswordValidation("Password must contain at least one uppercase letter (A–Z)");
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            setPasswordValidation("Password must contain at least one lowercase letter (a–z)");
+            return;
+        }
+        else if (password.length < 6) {
+            setPasswordValidation("Password must be at least 6 characters long");
+            return;
+        }
+
+        setPasswordValidation("");
+        toast.success("Registration successful!");
+        form.reset();
     }
     return (
         <section className="flex items-center justify-center min-h-screen bg-blue-50">
@@ -75,7 +97,8 @@ const Registration = () => {
                             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
-
+                    {passwordvaidation && <p className="text-red-500 text-sm mb-3">{passwordvaidation}</p>}
+                    
                     {/* Registration */}
                     <button
                         type="submit"
