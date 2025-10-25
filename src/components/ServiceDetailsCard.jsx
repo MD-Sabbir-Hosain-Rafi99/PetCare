@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
+import { motion } from "framer-motion";
 
 const ServiceDetailsCard = ({ petservice }) => {
     const { serviceId } = petservice;
@@ -12,7 +13,11 @@ const ServiceDetailsCard = ({ petservice }) => {
     // }
     return (
         <Link to={`/service/${serviceId}`}>
-            <div className="card bg-base-100 border shadow-sm cursor-pointer">
+            <motion.div initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                className="card bg-base-100 border shadow-sm cursor-pointer">
                 <figure className='h-58 overflow-hidden'>
                     <img className='w-full object-cover'
                         src={petservice.image}
@@ -26,7 +31,7 @@ const ServiceDetailsCard = ({ petservice }) => {
                         View Details
                     </button>
                 </div>
-            </div>
+            </motion.div>
 
         </Link>
     );

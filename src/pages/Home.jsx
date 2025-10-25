@@ -8,6 +8,7 @@ import ServiceDetailsCard from '../components/ServiceDetailsCard';
 import { FaPaw, FaDog, FaCat, FaHeart, FaBone } from "react-icons/fa";
 import '../App.css'
 
+
 const Home = () => {
 
     const { petservices } = useCardsData();
