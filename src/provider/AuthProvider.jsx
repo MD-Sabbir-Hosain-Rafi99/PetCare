@@ -12,6 +12,8 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     // state er user jodi share kori taholy object create korbo
 
+    const [loading, setLoading] = useState(true)
+
     // User k signUp er jonno akta function create korsi
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -30,6 +32,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            setLoading(false);
         });
         return () => {
             unsubscribe();
@@ -42,7 +45,9 @@ const AuthProvider = ({ children }) => {
         setUser,
         createUser,
         signOutUser,
-        signIn
+        signIn,
+        loading,
+        setLoading,
     }
 
     // Step-2 authContext k AuthProvider theke return kore dawa
