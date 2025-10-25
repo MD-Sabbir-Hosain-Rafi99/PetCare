@@ -1,69 +1,78 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
+import { 
+    createUserWithEmailAndPassword,
+    getAuth,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signOut,
+    updateProfile,
+    GoogleAuthProvider,
+    signInWithPopup
+} from "firebase/auth";
 
-// Contex create korar step 3ta
-// Step-1 : Create Context and export korbo bcz ayi context ta amr multiple jaigaty use korte hobe
 export const AuthContext = createContext();
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+
 const AuthProvider = ({ children }) => {
-
-    const [user, setUser] = useState(null)
-    // state er user jodi share kori taholy object create korbo
-
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    console.log(loading, user)
+    console.log(loading, user);
 
-    // User k signUp er jonno akta function create korsi
     const createUser = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password);
     };
 
     const signIn = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
-    }
+    };
 
-    // User Updat kortesi
+    // Google sign in
+    const signInWithGoogle = () => {
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider);
+    };
+
+    // Update user profile
     const updateUser = (updatedData) => {
-        return updateProfile(auth.currentUser, updatedData)
-    }
+        return updateProfile(auth.currentUser, updatedData);
+    };
 
-    // User SignOutUser er jonno function create kori
+    // Sign out
     const signOutUser = () => {
         return signOut(auth);
-    }
-
+    };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setLoading(false);
         });
-        return () => {
-            unsubscribe();
-        }
+        return () => unsubscribe();
     }, []);
-
 
     const authData = {
         user,
         setUser,
         createUser,
-        signOutUser,
         signIn,
-        loading,
-        setLoading,
+        signInWithGoogle, 
         updateUser,
-    }
+        signOutUser,
+        loading,
+        setLoading
+    };
 
-    // Step-2 authContext k AuthProvider theke return kore dawa
-    return <AuthContext value={authData}>
-        {children}
-    </AuthContext>
-}
+    return (
+        <AuthContext.Provider value={authData}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
 
-export default AuthProvider
+export default AuthProvider;

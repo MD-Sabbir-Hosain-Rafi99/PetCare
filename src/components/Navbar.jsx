@@ -76,7 +76,7 @@ const Navbar = () => {
                         )
                     }
 
-                    {/* Login / Logout Button */}
+                    {/* Login , Logout Button */}
                     {
                         user
                             ? (<button onClick={handleLogOut} className="btn btn-primary">LogOut</button>)

@@ -2,6 +2,7 @@ import React, { use, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { AuthContext } from '../provider/AuthProvider'
 import toast from 'react-hot-toast';
+import GoogleLoginButton from '../components/GoogleLoginButton';
 
 const Registration = () => {
     const { createUser, setUser, updateUser } = use(AuthContext);
@@ -23,7 +24,7 @@ const Registration = () => {
                 // console.log(user);
                 updateUser({ displayName: name, photoURL: photo })
                     .then(() => {
-                        setUser({...user, displayName: name, photoURL: photo});
+                        setUser({ ...user, displayName: name, photoURL: photo });
                         navigate('/');
                     }).catch((err) => {
                         console.log(err)
@@ -33,7 +34,7 @@ const Registration = () => {
                 const errorCode = err.code;
                 // const errorMessage = err.message;
                 console.log(errorCode)
-               
+
                 // setError(errorCode)
             })
 
@@ -115,6 +116,7 @@ const Registration = () => {
                     >
                         Registration
                     </button>
+                    <GoogleLoginButton />
                     <div>
                         <p className="font-bold">Already Have An Account ? <Link className="text-sm text-blue-600 hover:underline" to='/auth/login'>Login</Link></p>
                     </div>
