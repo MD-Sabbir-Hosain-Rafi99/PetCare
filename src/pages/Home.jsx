@@ -7,6 +7,7 @@ import { Link } from 'react-router';
 import ServiceDetailsCard from '../components/ServiceDetailsCard';
 import { FaPaw, FaDog, FaCat, FaHeart, FaBone } from "react-icons/fa";
 import '../App.css'
+import Faq from '../layouts/Faq';
 
 
 const Home = () => {
@@ -81,6 +82,7 @@ const Home = () => {
                 </div>
             </div>
             <Experts />
+            <Faq />
         </>
 
     )
