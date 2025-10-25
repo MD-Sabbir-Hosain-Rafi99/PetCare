@@ -1,12 +1,13 @@
 import React, { use, useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { AuthContext } from '../provider/AuthProvider'
 import toast from 'react-hot-toast';
 
 const Registration = () => {
-    const { createUser, setUser } = use(AuthContext);
+    const { createUser, setUser, updateUser } = use(AuthContext);
     const [passwordvaidation, setPasswordValidation] = useState("")
     // const [error, setError] = useState("")
+    const navigate = useNavigate();
     const handleRegister = (e) => {
         e.preventDefault();
         // console.log(e.target);
@@ -20,15 +21,23 @@ const Registration = () => {
             .then((res) => {
                 const user = res.user;
                 // console.log(user);
-                setUser(user);
+                updateUser({ displayName: name, photoURL: photo })
+                    .then(() => {
+                        setUser({...user, displayName: name, photoURL: photo});
+                        navigate('/');
+                    }).catch((err) => {
+                        console.log(err)
+                        setUser(user);
+                    })
             }).catch((err) => {
                 const errorCode = err.code;
                 // const errorMessage = err.message;
                 console.log(errorCode)
+               
                 // setError(errorCode)
             })
 
-      
+
         if (!/[A-Z]/.test(password)) {
             setPasswordValidation("Password must contain at least one uppercase letter (A–Z)");
             return;
@@ -98,7 +107,7 @@ const Registration = () => {
                         />
                     </div>
                     {passwordvaidation && <p className="text-red-500 text-sm mb-3">{passwordvaidation}</p>}
-                    
+
                     {/* Registration */}
                     <button
                         type="submit"

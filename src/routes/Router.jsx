@@ -8,6 +8,8 @@ import ServiceDetails from "../pages/ServiceDetails";
 import Services from "../pages/Services";
 import { createBrowserRouter } from "react-router";
 import PrivateRoute from "../provider/PrivateRoute";
+import MyProfile from "../pages/MyProfile";
+import ForgetPassword from "../pages/ForgetPassword";
 
 const router = createBrowserRouter([
     {
@@ -36,11 +38,17 @@ const router = createBrowserRouter([
                         path: "/auth/registration",
                         element: <Registration />
                     },
+                    {
+                        path: "/auth/forget-password",
+                        element: <ForgetPassword />,
+                    }
                 ],
             },
             {
                 path: "/myprofile",
-                element: <h2>myProfile</h2>
+                element: <PrivateRoute>
+                    <MyProfile />
+                </PrivateRoute>
             },
             {
                 path: "/service/:id",

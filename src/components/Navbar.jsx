@@ -1,7 +1,9 @@
 import React, { useContext } from 'react'
 import logo from '../assets/logonav.jpg'
+import userIcon from '../assets/user.png'
 import { Link, NavLink } from 'react-router'
 import { AuthContext } from '../provider/AuthProvider'
+import toast from 'react-hot-toast'
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext);
@@ -11,7 +13,7 @@ const Navbar = () => {
         // console.log("LogOut");
         signOutUser()
             .then(() => {
-                alert("LogOut Done")
+                toast.success("Logout successfully!");
             }).catch((err) => {
                 console.log(err)
             })
@@ -55,9 +57,9 @@ const Navbar = () => {
                 <div className="navbar-end gap-x-2">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full border-2 border-blue-400">
-                            <img
+                            <img className='w-12 rounded-full'
                                 alt="User Avatar"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                                src={`${user ? user.photoURL : userIcon}`}
                             />
                         </div>
                     </div>
@@ -77,8 +79,17 @@ const Navbar = () => {
                     {/* Login / Logout Button */}
                     {
                         user
-                            ? <button onClick={handleLogOut} className="btn btn-primary">LogOut</button>
-                            : <Link to='/auth/login' className="btn btn-primary">Login</Link>
+                            ? (<button onClick={handleLogOut} className="btn btn-primary">LogOut</button>)
+                            : (
+                                <div className="flex gap-3">
+                                    <Link to="/auth/login" className="btn btn-primary">
+                                        Login
+                                    </Link>
+                                    <Link to="/auth/registration" className="btn btn-secondary">
+                                        Registration
+                                    </Link>
+                                </div>
+                            )
                     }
                 </div>
             </div>
